@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <link rel="Stylesheet" href="bigzoom.css" />
+    <script type="text/javascript" src="bigzoom.js"></script>
+    <title>BigZoom Mobile</title>
+
+    <script>
+        var bigZoom = new BigZoom();
+        function jsonCallback(json) {
+            bigZoom.mapData = json.data;
+            bigZoom.renderCanvas();
+        }
+        function initBigZoom() {
+            bigZoom.init(document.getElementById('container'));
+
+            var s = document.createElement('script');
+            s.src = '/bounds.js';
+            s.type = 'text/javascript';
+
+            if (document.getElementsByTagName('head').length > 0) {
+                document.getElementsByTagName('head')[0].appendChild(s);
+            }
+        }
+    </script>
+</head>
+<body onload="initBigZoom()" style="margin:0; overflow:hidden">
+<div id="blah" style="display:none; background-color:White; position:fixed; left:100px; width:200px; margin:auto; z-index:99">aasd</div>
+
+<div id="container" style="position:fixed; overflow:hidden">
+</div>
+</body>
+</html>
